@@ -1,12 +1,134 @@
-:root {
-  --red:#b90e31; --gold:#fabd0f; --blue:#002452;
+:root{
+  /* Only colors: light purple, black, cream */
+  --purple:#c9a7ff;
+  --black:#07070a;
+  --cream:#f6f0e6;
+
+  /* neutrals derived from the same palette (still “black/cream”) */
+  --ink: var(--black);
+  --paper: var(--cream);
+
+  --radius:16px;
+  --shadow:0 18px 50px rgba(0,0,0,.55);
+  --line: rgba(246,240,230,.18);
 }
-body { font-family: system-ui, sans-serif; margin:0; background:var(--red); color:#fff; }
-header { background:var(--blue); color:#fff; padding:1rem; }
-main { background:#fff; color:#1a1a1a; max-width:900px; margin:2rem auto; border-radius:12px; padding:1.5rem; }
-a { color: var(--blue); }
-/* === personalize below by changing colors or spacing === */
-/* example: make headings blue and a bit larger */
-h2 { color: var(--blue); font-size: 1.6rem; }
-/* example: make your photo round */
-img { border-radius: 12px; }
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--paper);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(201,167,255,.35), transparent 55%),
+    radial-gradient(900px 500px at 85% 20%, rgba(201,167,255,.18), transparent 55%),
+    linear-gradient(180deg, var(--black), var(--black));
+  min-height:100vh;
+}
+
+/* Header: clean, bold, minimal */
+header{
+  max-width: 980px;
+  margin: 2.25rem auto 0;
+  padding: 0 1.25rem;
+}
+
+header h1{
+  margin:0;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  letter-spacing:-0.02em;
+  line-height:1.1;
+  color: var(--paper);
+}
+
+/* Accent underline (purple only) */
+header h1::after{
+  content:"";
+  display:block;
+  width: 120px;
+  height: 6px;
+  margin-top: .9rem;
+  border-radius: 999px;
+  background: var(--purple);
+}
+
+/* Main: cream card on black background */
+main{
+  max-width: 980px;
+  margin: 1.75rem auto 3rem;
+  padding: 1.75rem;
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(201,167,255,.35);
+}
+
+/* Section titles */
+h2{
+  margin: 1.75rem 0 .65rem;
+  font-size: 1.35rem;
+  letter-spacing:-0.01em;
+  color: var(--ink);
+}
+
+/* Subtle separators (cream + purple) */
+h2{
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(7,7,10,.12);
+}
+h2:first-of-type{
+  border-top:none;
+  padding-top:0;
+  margin-top:.25rem;
+}
+
+/* Body text */
+p{
+  margin: 0 0 1rem;
+  line-height: 1.75;
+}
+
+/* Lists */
+ul{ margin:0; padding-left: 1.25rem; }
+li{ margin: .55rem 0; line-height: 1.7; }
+
+/* Make the bolded project/course names pop (purple only) */
+strong{
+  color: var(--black);
+  background: rgba(201,167,255,.35);
+  padding: .12rem .4rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Links: purple underline, black text */
+a{
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(201,167,255,.75);
+  padding-bottom: 2px;
+}
+a:hover,
+a:focus-visible{
+  outline: none;
+  border-bottom-color: var(--black);
+}
+
+/* Photo styling) */
+img{
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 3px solid rgba(201,167,255,.65);
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+  margin-top: 1rem;
+}
+
+/* Small screens */
+@media (max-width: 600px){
+  main{ padding: 1.25rem; }
+  header{ margin-top: 1.75rem; }
+  img{ width: 200px; height: 200px; }
+}
